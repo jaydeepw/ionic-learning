@@ -40,6 +40,9 @@ angular.module('ionicApp', ['ionic', 'ngResource'])
 
 })
 
+
+
+
 .directive('pushSearch', function() {
   return {
     restrict: 'A',
