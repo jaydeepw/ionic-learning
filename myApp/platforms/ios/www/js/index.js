@@ -26,11 +26,16 @@ angular.module('ionicApp', ['ionic', 'ngResource'])
   var doSearch = ionic.debounce(function(query) {
     Flickr.search(query).then(function(resp) {
       $scope.photos = resp;
+      console.log(resp);
     });
   }, 500);
   
   $scope.search = function() {
     doSearch($scope.query);
+  }
+
+  $scope.onItemClick = function(item) {
+    console.log(item);
   }
 
 })

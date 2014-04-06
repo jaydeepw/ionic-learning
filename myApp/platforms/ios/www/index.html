@@ -27,7 +27,7 @@
 
 <body ng-controller="FlickrCtrl">
 
-  <ion-header-bar class="bar-dark"><h1 class="title">Flickr Search</h1>
+  <ion-header-bar class="bar-positive"><h1 class="title">Flickr Search</h1>
   </ion-header-bar>
 
   <div id="search-bar">
@@ -41,9 +41,19 @@
 
   <ion-content id="content" push-search>
     <div id="photos" class="clearfix">
-      <div class="photo" ng-repeat="photo in photos.items">
-        <img ng-src="{{ photo.media.m }}">
-      </div>
+      <ion-list>
+
+        <ion-item ng-repeat="item in photos.items" 
+                  item="item"
+                  ng-click="onItemClick(item)"
+                  class="item item-thumbnail-left" >
+          
+          <img ng-src="{{ item.media.m }}">
+          <h2>{{ item.author }}</h2>
+          <h4>{{query}}</h4>
+        </ion-item>
+
+      </ion-list>
     </div>
   </ion-content>
 
