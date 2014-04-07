@@ -1,0 +1,33 @@
+<body ng-controller="FlickrCtrl">
+
+  <ion-header-bar class="bar-positive"><h1 class="title">Flickr Search</h1>
+  </ion-header-bar>
+
+  <div id="search-bar">
+    <div class="item item-input-inset">
+      <label class="item-input-wrapper" id="search-input">
+        <i class="icon ion-search placeholder-icon"></i>
+        <input type="text" placeholder="Search" ng-model="query" ng-change="search()">
+      </label>
+    </div>
+  </div>
+
+  <ion-content id="content" push-search>
+    <div id="photos" class="clearfix">
+      <ion-list>
+
+        <ion-item ng-repeat="item in photos.items" 
+                  item="item"
+                  ng-click="onItemClick(item)"
+                  class="item item-thumbnail-left" >
+          
+          <img ng-src="{{ item.media.m }}">
+          <h2>{{ item.author }}</h2>
+          <h4>{{query}}</h4>
+        </ion-item>
+
+      </ion-list>
+    </div>
+  </ion-content>
+
+</body>

@@ -1,4 +1,4 @@
-angular.module('ionicApp', ['ionic', 'ngResource'])
+var FlickrApp = angular.module('ionicApp', ['ionic', 'ngResource', 'ngRoute'])
 
 .factory('Flickr', function($resource, $q) {
   var photosPublic = $resource('http://api.flickr.com/services/feeds/photos_public.gne', 
@@ -40,9 +40,6 @@ angular.module('ionicApp', ['ionic', 'ngResource'])
 
 })
 
-
-
-
 .directive('pushSearch', function() {
   return {
     restrict: 'A',
@@ -73,3 +70,19 @@ angular.module('ionicApp', ['ionic', 'ngResource'])
     }
   }
 });
+
+FlickrApp.config(['$routeProvider',
+  function($routeProvider) {
+    $routeProvider.
+      when('/', {
+        templateUrl: 'partials/list.html',
+        controller: 'FlickrCtrl'
+      }).
+      when('/phones/:phoneId', {
+        templateUrl: 'partials/phone-detail.html',
+        controller: 'PhoneDetailCtrl'
+      }).
+      otherwise({
+        redirectTo: '/'
+      });
+  }]);
