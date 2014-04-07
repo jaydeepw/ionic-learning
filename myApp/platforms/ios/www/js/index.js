@@ -45,8 +45,15 @@ var FlickrApp = angular.module('ionicApp', ['ionic', 'ngResource', 'ngRoute'])
     $scope.phoneId = $routeParams.phoneId;
   }])
 
+.controller('MyCtrl', ['$scope',
+  function($scope) {
+    $scope.goBack = function() {
+      window.history.back();
+    };
+  }])
+
 .directive('pushSearch', function() {
-  return {
+  /*return {
     restrict: 'A',
     link: function($scope, $element, $attr) {
       var amt, st, header;
@@ -63,7 +70,9 @@ var FlickrApp = angular.module('ionicApp', ['ionic', 'ngResource', 'ngRoute'])
         }
       });
     }
-  }
+  }*/
+
+  return {};
 })
 
 .directive('photo', function($window) {
@@ -91,3 +100,9 @@ FlickrApp.config(['$routeProvider',
         redirectTo: '/'
       });
   }]);
+
+function MyCtrl($scope, $ionicNavBarDelegate) {
+  $scope.goBack = function() {
+    $ionicNavBarDelegate.back();
+  };
+}

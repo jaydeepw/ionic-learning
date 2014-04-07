@@ -1,20 +1,17 @@
 <body ng-controller="Ctrl2">
 
-  <ion-header-bar class="bar-positive"><h1 class="title">Details</h1>
-
-    
+  <ion-header-bar ng-controller="MyCtrl" class="bar-positive">
+    <ion-nav-back-button class="button-icon"
+      ng-click="goBack()">
+      <i class="ion-arrow-left-c"></i> Back
+    </ion-nav-back-button>  
+    <h1 class="title">Details</h1>
   </ion-header-bar>
-
-<!--   <ion-nav-bar>
-  <ion-nav-back-button class="button-icon">
-    <i class="ion-arrow-left-c"></i> Back!
-  </ion-nav-back-button>
-</ion-nav-bar> -->
 
   <ion-content id="content" push-search>
     
     <h2>Details</h2>
-          <h4>{{phoneId}}</h4>
+    <h4>{{phoneId}}</h4>
   </ion-content>
 
 </body>
