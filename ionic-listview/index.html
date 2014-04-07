@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <title>Ionic List/Infinite Scroll Example: v0.9.22 - CodePen</title>
+
+</head>
+
+<body>
+
+  <html>
+  <head>
+    <meta charset="utf-8">
+    <title>Ionic List Example</title>
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
+
+    <title>Infitine Scroll</title>
+
+    <link href="http://code.ionicframework.com/0.9.26/css/ionic.min.css" rel="stylesheet">
+    <script src="http://code.ionicframework.com/0.9.26/js/ionic.bundle.min.js"></script>
+  </head>
+
+  <!-- 
+    'listExample' is the name of this angular module (app.js)
+    'nav-router' attribute updates the nav-bar title and animations as you navigate
+    'animation' attribute sets which type of animations to use
+  -->
+  <body ng-app="listExample" nav-router animation="slide-left-right-ios7">
+
+    <!-- The nav bar that will be updated as we navigate -->
+    <ion-nav-bar 
+      class="nav-title-slide-ios7" 
+      type="bar-positive" 
+      back-button-type="button-icon" 
+      back-button-icon="ion-arrow-left-c"></ion-nav-bar>
+
+    <!-- where the content of each page will be rendered -->
+    <ion-nav-view></ion-nav-view>
+
+    <!-- 
+      Belows are examples of using inline angular templates:
+      http://docs.angularjs.org/api/ng.directive:script
+    -->
+
+    <!--
+      This template loads when the the root '/' url is matched (app.js)
+      'movies' is a $scope variable which was created in MovieIndexCtrl (controllers.js)
+      The MovieIndexCtrl gets data from the MovieService (service.js)
+    -->
+    <script type="text/ng-template" id="/index.html">
+      <ion-view>
+      <ion-nav-page title="title">
+        <ion-content has-header="true" on-infinite-scroll="loadMore()">
+
+          <ion-list>
+            <ion-item ng-repeat="movie in movies" href="#/movie/{{movie.id}}" type="item-link">
+              {{ movie.title }}
+            </ion-item>
+          </ion-list>
+          <ion-infinite-scroll></ion-infinite-scroll>
+        </ion-content>
+      </ion-nav-page>
+      </ion-view>
+    </script>
+
+    <!--
+      This template loads when the '/movie/:movieId' url is matched (app.js)
+      'movie' is a $scope variable which was created in MovieDetailCtrl (controllers.js)
+      The MovieDetailCtrl gets data from the MovieService (service.js)
+    -->
+    <script type="text/ng-template" id="/movie.html">
+      <ion-view>
+      <ion-nav-page title="title">
+        <ion-content has-header="true" padding="true">
+          <h1>{{ movie.title }}</h1>
+          <dl>
+            <dt>Description:</dt>
+            <dd>{{ movie.description }}</dd>
+          </dl>
+          <dl>
+            <dt>Released:</dt>
+            <dd>{{ movie.released }}</dd>
+          </dl>
+          <dl>
+            <dt>Director:</dt>
+            <dd>{{ movie.director }}</dd>
+          </dl>
+          <dl>
+            <dt>Rating:</dt>
+            <dd>{{ movie.rating }}</dd>
+          </dl>
+        </ion-content>
+      </ion-nav-page>
+      </ion-view>
+    </script>
+
+  </body>
+</html>
+
+  <script src="js/index.js"></script>
+
+</body>
+
+</html>
