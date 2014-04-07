@@ -40,6 +40,25 @@ var FlickrApp = angular.module('ionicApp', ['ionic', 'ngResource', 'ngRoute'])
 
 })
 
+.controller('FlickrCtrl2', function($scope, Flickr) {
+
+  var doSearch = ionic.debounce(function(query) {
+    Flickr.search(query).then(function(resp) {
+      $scope.photos = resp;
+      console.log(resp);
+    });
+  }, 500);
+  
+  $scope.search = function() {
+    doSearch($scope.query);
+  }
+
+  $scope.onItemClick = function(item) {
+    console.log(item);
+  }
+
+})
+
 .directive('pushSearch', function() {
   return {
     restrict: 'A',
@@ -78,9 +97,9 @@ FlickrApp.config(['$routeProvider',
         templateUrl: 'partials/list.html',
         controller: 'FlickrCtrl'
       }).
-      when('/phones/:phoneId', {
-        templateUrl: 'partials/phone-detail.html',
-        controller: 'PhoneDetailCtrl'
+      when('/:phoneId', {
+        templateUrl: 'partials/details.html',
+        controller: 'FlickrCtrl2'
       }).
       otherwise({
         redirectTo: '/'

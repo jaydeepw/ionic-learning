@@ -1,6 +1,6 @@
-<body ng-controller="FlickrCtrl">
+<body ng-controller="FlickrCtrl2">
 
-  <ion-header-bar class="bar-positive"><h1 class="title">Flickr Search</h1>
+  <ion-header-bar class="bar-positive"><h1 class="title">Details</h1>
   </ion-header-bar>
 
   <div id="search-bar">
@@ -19,7 +19,6 @@
         <ion-item ng-repeat="item in photos.items" 
                   item="item"
                   ng-click="onItemClick(item)"
-                  href="#/{{item.author_id}}"
                   class="item item-thumbnail-left" >
           
           <img ng-src="{{ item.media.m }}">
