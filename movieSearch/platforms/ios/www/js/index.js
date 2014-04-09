@@ -3,10 +3,10 @@
 // You can get it here.  http://developer.rottentomatoes.com/
 
 // test key
-var API_KEY = "f8b9qaux45g3ptwezzrrf2hg";
+// var API_KEY = "f8b9qaux45g3ptwezzrrf2hg";
 
 // remove this later
-// var API_KEY = "7ect2zrb24k3fpa2bttzswqn";
+var API_KEY = "7ect2zrb24k3fpa2bttzswqn";
 
 var FlickrApp = angular.module('ionicApp', ['ionic', 'ngResource', 'ngRoute'])
 

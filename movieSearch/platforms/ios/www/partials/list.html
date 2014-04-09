@@ -10,7 +10,14 @@
       <label class="item-input-wrapper" id="search-input">
         <i class="icon ion-search placeholder-icon"></i>
         <form ng-submit="search()">
-          <input type="text" placeholder="Search" ng-model="query">
+          <div class="item item-input-inset">
+          <label class="item-input-wrapper">
+            <input type="text" placeholder="Search" ng-model="query" />
+          </label>
+          <button class="button button-small">
+            Search
+          </button>
+        </div>
         </form>
       </label>
     </div>
