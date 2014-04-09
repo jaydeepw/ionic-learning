@@ -4,11 +4,14 @@
     <h1 class="title">Movie Search</h1>
   </ion-header-bar>
 
+
   <div id="search-bar">
     <div class="item item-input-inset">
       <label class="item-input-wrapper" id="search-input">
         <i class="icon ion-search placeholder-icon"></i>
-        <input type="text" placeholder="Search" ng-model="query" ng-change="search()">
+        <form ng-submit="search()">
+          <input type="text" placeholder="Search" ng-model="query">
+        </form>
       </label>
     </div>
   </div>
@@ -17,15 +20,15 @@
     <div id="photos" class="clearfix">
       <ion-list>
 
-        <ion-item ng-repeat="item in photos.items" 
+        <ion-item ng-repeat="item in moviesList.movies" 
                   item="item"
                   ng-click="onItemClick(item)"
-                  href="#/{{item.author_id}}"
+                  href="#/{{item.id}}"
                   class="item item-thumbnail-left" >
           
-          <img ng-src="{{ item.media.m }}">
-          <h2>{{ item.author_id }}</h2>
-          <h4>{{query}}</h4>
+          <img ng-src="{{ item.posters.thumbnail }}">
+          <h2>{{ item.title }}</h2>
+          <h4>{{ item.year }}</h4>
         </ion-item>
 
       </ion-list>
