@@ -32,8 +32,14 @@
   background: none;
   border: none;
 }
+
 #content {
   top: 44px;
   padding-top: 60px;
   padding-bottom: 20px;
+}
+
+.item {
+  height: 40px;
+margin-top: 5px;
 }
