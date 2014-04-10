@@ -133,6 +133,13 @@ function searchMovie(moviename, $scope, $http, $ionicPopup) {
         } else {
           $scope.movie_results = "No results found!";
           $scope.moviesList = [];
+
+          $ionicPopup.alert({
+            title: 'No results found!',
+            content: ''
+          }).then(function(res) {
+            console.log('No results found');
+          });
         }
       })
     .error(function(data, status, headers, config) {
@@ -144,7 +151,7 @@ function searchMovie(moviename, $scope, $http, $ionicPopup) {
           title: 'Something went wrong!',
           content: status
         }).then(function(res) {
-          console.log('Thank you for not eating my delicious ice cream cone');
+          console.log('Do something on ok.');
         });
       });
 }
