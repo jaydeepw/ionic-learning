@@ -39,7 +39,7 @@ var FlickrApp = angular.module('ionicApp', ['ionic', 'ngResource', 'ngRoute'])
       console.log($scope.query);
 
       if($scope.query != '')
-        searchMovie($scope.query, $scope, $http);
+        searchMovie($scope.query, $scope, $http, $ionicPopup);
     }
   }])
 
@@ -110,7 +110,7 @@ function MyCtrl($scope, $ionicNavBarDelegate) {
   };
 }
 
-function searchMovie(moviename, $scope, $http) {
+function searchMovie(moviename, $scope, $http, $ionicPopup) {
   var APIUrl = "http://api.rottentomatoes.com/api/public/v1.0/movies.json?apikey=" + API_KEY + "&q=" + moviename + "&callback=JSON_CALLBACK";
 
   $http({method: 'JSONP', url: APIUrl})
@@ -139,5 +139,12 @@ function searchMovie(moviename, $scope, $http) {
         // called asynchronously if an error occurs
         // or server returns response with an error status.
         console.log('Error ' + status);
+
+        $ionicPopup.alert({
+          title: 'Something went wrong!',
+          content: status
+        }).then(function(res) {
+          console.log('Thank you for not eating my delicious ice cream cone');
+        });
       });
 }
